@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -59,4 +60,20 @@ class User extends Authenticatable
     {
         return $this->hasOne(AvailableOuting::class)->latest();
     }
+
+    public function announcements()
+    {
+        return $this->belongsToMany(Announcement::class);
+    }
+
+    public function todayVote()
+    {
+        return $this->hasOne(ActivityVote::class)->whereDate('created_at',today());
+    }
+
+
+
+
+
+
 }

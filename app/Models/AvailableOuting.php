@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,8 +13,22 @@ class AvailableOuting extends Model
     protected $fillable = [
         'created_by',
         'user_id',
-        'until'
+        'until',
+        'is_banned'
     ];
+
+    protected $casts = [
+        'until' => 'date:H:i'
+    ];
+    protected $appends = [
+        'is_late_for_outing'
+    ];
+
+    public function getIsLateForOutingAttribute()
+    {
+        if (isset($this->until))
+           return $this->until < Carbon::now();
+    }
 
 
     public function user()

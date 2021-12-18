@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\AvailableOuting;
 use App\Models\Outing;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -23,7 +24,7 @@ class OutingFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => random_int(1,110),
             'available_outing_id' => random_int(1,100)
         ];
     }

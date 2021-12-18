@@ -19,6 +19,13 @@ class Apartment extends Model
     {
         return $this->hasMany(Ratting::class);
     }
+    public function lastMonthRattings()
+    {
+        return $this->hasMany(Ratting::class)
+            ->whereDate('created_at','>',Carbon::today()->subMonth()->startOfWeek());
+
+    }
+
     public function lastWeekRattings()
     {
         return $this->hasMany(Ratting::class)->whereDate('created_at','>',Carbon::today()->subWeek());

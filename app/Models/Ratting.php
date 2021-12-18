@@ -10,20 +10,29 @@ class Ratting extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'apartment_id',
         'rating'
     ];
 
     protected $casts = [
-        'rating' =>'double'
+        'rating' =>'double',
+    ];
+    protected $appends = [
+        'edited_ratting',
+        'day_for_human'
     ];
 
-
-    public function user()
+    public function getEditedRattingAttribute()
     {
-        return $this->belongsTo(User::class);
+        return $this->rating == null ? 'Bez hodnotenia' : $this->rating*20;
     }
+
+
+    public function getDayForHumanAttribute()
+    {
+        return  $this->created_at->isoformat('dddd ') . $this->created_at->format('d.m');
+    }
+
 
     public function apartment()
     {

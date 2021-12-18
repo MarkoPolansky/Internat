@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\AvailableOuting;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -47,6 +48,10 @@ class RegisteredUserController extends Controller
         ]);
 
         $user->assignRole(['internatista','vychovavatel','Super-Admin']);
+        AvailableOuting::create([
+            'user_id' => $user->id,
+            'until' => '21:30'
+        ]);
 
         event(new Registered($user));
 

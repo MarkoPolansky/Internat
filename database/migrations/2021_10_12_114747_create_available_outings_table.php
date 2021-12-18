@@ -17,7 +17,8 @@ class CreateAvailableOutingsTable extends Migration
             $table->id();
             $table->foreignId('created_by')->nullable()->references('id')->on('users')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->time('until');
+            $table->time('until')->nullable();
+            $table->boolean('is_banned')->default(false);
             $table->timestamps();
         });
     }

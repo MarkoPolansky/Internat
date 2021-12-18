@@ -16,7 +16,10 @@ class OutingController extends Controller
             ->latest()
             ->first();
 
-        abort_if($available_outing->until < Carbon::now()->toTimeString(),404,);
+
+
+        abort_if($available_outing->until < Carbon::now(),404,);
+        abort_if($available_outing->is_banned == true,404,);
       //  abort_if(404,); situacia ked existuje uz outing policies
 
 

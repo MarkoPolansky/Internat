@@ -24,9 +24,8 @@ class AvailableOutingFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
-            'until' => Carbon::createFromTime(20,30)->toTimeString()
-
+            'user_id' =>random_int(1,110),
+            'until' => Carbon::createFromTime(20,random_int(0,59))->toTimeString()
         ];
     }
 }

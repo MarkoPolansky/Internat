@@ -7,103 +7,135 @@
 
             <div class="flex flex-wrap -mx-3 mb-20">
 
-                <div class="w-1/2 xl:w-1/4 px-3">
-                    <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
-                        <svg class="w-16 h-16  mr-4 hidden lg:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
+                    <div class="w-1/2 xl:w-1/4 px-3">
+                        <Link :href="route('admin.vychadzky')">
+                            <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
+                                <svg class="w-16 h-16  mr-4 hidden lg:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
 
-                        <div class="text-gray-700">
-                            <p class="font-semibold text-3xl">{{ outingsCount }}</p>
-                            <p>Na vychádzkach</p>
-                        </div>
-
+                                <div class="text-gray-700">
+                                    <p class="font-semibold text-3xl">{{ outingsCount }}</p>
+                                    <p>Na vychádzkach</p>
+                                </div>
+                            </div>
+                        </Link>
                     </div>
-                </div>
+
+
+
+                    <div class="w-1/2 xl:w-1/4 px-3">
+                        <Link :href="route('admin.hodnotenie.create')">
+                            <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16  mr-4 hidden lg:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                </svg>
+                                <div class="text-gray-700">
+                                    <p class="font-semibold text-3xl">{{ rattedRooms }} / {{roomsCount}}</p>
+                                    <p>Ohodnotených izieb</p>
+                                </div>
+                            </div>
+                         </Link>
+                    </div>
+
 
                 <div class="w-1/2 xl:w-1/4 px-3">
-                    <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
-                        <svg class="w-16 h-16 fill-current mr-4 hidden lg:block" viewBox="0 0 20 20">
-                            <path d="M17.684,7.925l-5.131-0.67L10.329,2.57c-0.131-0.275-0.527-0.275-0.658,0L7.447,7.255l-5.131,0.67C2.014,7.964,1.892,8.333,2.113,8.54l3.76,3.568L4.924,17.21c-0.056,0.297,0.261,0.525,0.533,0.379L10,15.109l4.543,2.479c0.273,0.153,0.587-0.089,0.533-0.379l-0.949-5.103l3.76-3.568C18.108,8.333,17.986,7.964,17.684,7.925 M13.481,11.723c-0.089,0.083-0.129,0.205-0.105,0.324l0.848,4.547l-4.047-2.208c-0.055-0.03-0.116-0.045-0.176-0.045s-0.122,0.015-0.176,0.045l-4.047,2.208l0.847-4.547c0.023-0.119-0.016-0.241-0.105-0.324L3.162,8.54L7.74,7.941c0.124-0.016,0.229-0.093,0.282-0.203L10,3.568l1.978,4.17c0.053,0.11,0.158,0.187,0.282,0.203l4.578,0.598L13.481,11.723z"></path>
+                    <div v-if="activities.length == 0"  class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6" >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16  mr-4 hidden lg:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
                         </svg>
-
-                        <div class="text-gray-700">
-                            <p class="font-semibold text-3xl">{{ rattedRooms }} / {{roomsCount}}</p>
-                            <p>Ohodnotených izieb</p>
+                        <div  class="text-gray-700">
+                                <a @click.prevent="showingModalPickActivity = true" class="font-semibold text-xl" href="">
+                                    Vybrať aktivitu
+                                </a>
                         </div>
                     </div>
-                </div>
 
-                <div class="w-1/2 xl:w-1/4 px-3">
-                    <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6">
-                        <svg class="w-16 h-16 fill-current mr-4 hidden lg:block" viewBox="0 0 20 20">
-                            <path d="M14.999,8.543c0,0.229-0.188,0.417-0.416,0.417H5.417C5.187,8.959,5,8.772,5,8.543s0.188-0.417,0.417-0.417h9.167C14.812,8.126,14.999,8.314,14.999,8.543 M12.037,10.213H5.417C5.187,10.213,5,10.4,5,10.63c0,0.229,0.188,0.416,0.417,0.416h6.621c0.229,0,0.416-0.188,0.416-0.416C12.453,10.4,12.266,10.213,12.037,10.213 M14.583,6.046H5.417C5.187,6.046,5,6.233,5,6.463c0,0.229,0.188,0.417,0.417,0.417h9.167c0.229,0,0.416-0.188,0.416-0.417C14.999,6.233,14.812,6.046,14.583,6.046 M17.916,3.542v10c0,0.229-0.188,0.417-0.417,0.417H9.373l-2.829,2.796c-0.117,0.116-0.71,0.297-0.71-0.296v-2.5H2.5c-0.229,0-0.417-0.188-0.417-0.417v-10c0-0.229,0.188-0.417,0.417-0.417h15C17.729,3.126,17.916,3.313,17.916,3.542 M17.083,3.959H2.917v9.167H6.25c0.229,0,0.417,0.187,0.417,0.416v1.919l2.242-2.215c0.079-0.077,0.184-0.12,0.294-0.12h7.881V3.959z"></path>
-                        </svg>
+                    <Link v-else  :href="route('admin.activity.index')">
 
-                        <div class="text-gray-700">
-                            <p class="font-semibold text-3xl">31</p>
-                            <p>New Enquiries</p>
-                        </div>
-                    </div>
-                </div>
+                        <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16  mr-4 hidden lg:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                            </svg>
+                            <div  class="text-gray-700">
+                                <div  v-for="activity in activities" :key="activity.id" >
+                                    <p  class="font-semibold text-xl">
+                                        {{activity.available_activity.name}}
+                                    </p>
+                                        <p> {{activity.starts_at}} - {{activity.ends_at}}</p>
+                                </div>
 
-                <div class="w-1/2 xl:w-1/4 px-3">
-                    <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6">
-                        <svg class="w-16 h-16 fill-current mr-4 hidden lg:block" viewBox="0 0 20 20">
-                            <path d="M17.431,2.156h-3.715c-0.228,0-0.413,0.186-0.413,0.413v6.973h-2.89V6.687c0-0.229-0.186-0.413-0.413-0.413H6.285c-0.228,0-0.413,0.184-0.413,0.413v6.388H2.569c-0.227,0-0.413,0.187-0.413,0.413v3.942c0,0.228,0.186,0.413,0.413,0.413h14.862c0.228,0,0.413-0.186,0.413-0.413V2.569C17.844,2.342,17.658,2.156,17.431,2.156 M5.872,17.019h-2.89v-3.117h2.89V17.019zM9.587,17.019h-2.89V7.1h2.89V17.019z M13.303,17.019h-2.89v-6.651h2.89V17.019z M17.019,17.019h-2.891V2.982h2.891V17.019z"></path>
-                        </svg>
+                            </div>
 
-                        <div class="text-gray-700">
-                            <p class="font-semibold text-3xl">1,653</p>
-                            <p>Product Views</p>
                         </div>
 
-                    </div>
+                    </Link >
+
                 </div>
+
+
+                    <div class="w-1/2 xl:w-1/4 px-3">
+                        <Link :href="route('admin.workout')">
+                        <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16  mr-4 hidden lg:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+
+                            <div class="text-gray-700">
+                                <p class="font-semibold text-3xl">{{workouts.length}}</p>
+                                <p>Na workoute</p>
+                            </div>
+
+                        </div>
+                        </Link>
+                    </div>
+
 
             </div>
 
             <div class="flex flex-wrap -mx-3">
 
-                <div class="w-full xl:w-1/3 px-3">
-                    <p class="text-xl font-semibold mb-4">Dnes</p>
+                <div class="w-full xl:w-1/3 px-3 ">
+                    <p class="text-xl font-semibold mb-4">Práve na vychádzkach</p>
 
-                    <div class="w-full bg-white border rounded-lg p-4">
+                    <div class=" w-full overflow-y-auto bg-white border rounded-lg p-4 max-h-96">
 
-                        <div v-for="outing in outings" :key="outing.id" class="w-full bg-gray-100 border rounded-lg flex justify-between items-center px-4 py-2 mb-4 ">
-                            <div>
+                        <div v-for="outing in outings" :key="outing.id"
+                             :class="[outing.is_late ? 'border-red-500' :' border-green-500']"
+                             class="w-full bg-gray-100 border-l-8 rounded-lg flex justify-between items-center px-4 py-2 mb-4 ">
+                            <div class="" >
                                 <p class="font-semibold text-xl">{{ outing.user.name }}</p>
                                 <p>Do: {{outing.available_outing.until.substring(0,5)}}</p>
                             </div>
-
                             <form method="post" @submit.prevent="submit(outing.id)">
-                                <button :disabled="form.processing" type="submit">
+                                <button type="submit">
                                     <svg  xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hover:text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                     </svg>
                                 </button>
                             </form>
-
-
-
-
-
-
                         </div>
 
                     </div>
                 </div>
-                <div class="w-full xl:w-1/3 px-3">
-                    <p class="text-xl font-semibold mb-4">Recent Sales</p>
 
+                <div class="w-full xl:w-1/3 px-3">
+                    <p class="text-xl font-semibold mb-4">Hlasovanie o aktivite</p>
                     <div class="w-full bg-white border rounded-lg p-4 mb-8 xl:mb-0">
-                        <canvas id="buyers-chart" width="600" height="400"></canvas>
+                        <GraphTodayActivityVoting :availableActivities="availableActivities">
+
+                        </GraphTodayActivityVoting>
                     </div>
                 </div>
 
                 <div class="w-full xl:w-1/3 px-3">
-                    <p class="text-xl font-semibold mb-4">Recent Reviews</p>
-
-                    <div class="w-full bg-white border rounded-lg p-4 mb-8 xl:mb-0">
-                        <canvas id="reviews-chart" width="600" height="400"></canvas>
+                    <p class="text-xl font-semibold mb-4">Aktuálne Na Workoute</p>
+                    <div class="w-full bg-white border rounded-lg p-4">
+                        <div v-for="workout in workouts" :key="workout.id"
+                             class="w-full bg-gray-100 border-l-8 border-green-500 rounded-lg flex justify-between items-center px-4 py-2 mb-4 ">
+                            <div class="" >
+                                <p class="font-semibold text-xl">{{ workout.user.name }}</p>
+                                <p>Začiatok: {{workout.created_at.split(' ')[1].substring(0,5)}}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -112,31 +144,54 @@
             </div>
         </div>
 
+<!--        <ModalPickActivity @close="showingModalPickActivity = false"-->
+<!--                           :show="showingModalPickActivity"-->
+<!--                            :availableActivities="availableActivities"/>-->
+
+        <ModalAddActivity
+            @close="showingModalPickActivity = false"
+            :show="showingModalPickActivity"
+            :availableActivities="availableActivities">
+
+        </ModalAddActivity>
 
     </Dashboard>
+
+
 </template>
 
 <script>
-import { Head } from '@inertiajs/inertia-vue3';
-
+import {Head, Link} from '@inertiajs/inertia-vue3';
+import GraphTodayActivityVoting from "@/Components/GraphTodayActivityVoting";
 import Dashboard from "@/Layouts/Admin/Dashboard";
+import BreezeButton from "@/Components/Button";
+import ModalAddActivity from "@/Components/ModalAddActivity";
+
 export default {
     components:{
         Dashboard,
-        Head
+        Head,
+        BreezeButton,
+        GraphTodayActivityVoting,
+        ModalAddActivity,
+        Link
     },
     props:{
         rattedRooms: Number,
         roomsCount: Number,
         outingsCount: Number,
-        outings: Object
-
-
+        outings: Object,
+        availableActivities: Object,
+        activities: Object,
+        workouts: Object,
 
     },
+
+    emits: ['close'],
+
     data() {
         return {
-            open: false,
+            showingModalPickActivity: false,
             form: this.$inertia.form({
                 outingId: null,
             }),
@@ -145,13 +200,7 @@ export default {
     },
 
     methods: {
-        selectAllCheckbox() {
-            console.log("selectedAôô")
-        },
-        toggleColumn(){
-            console.log("toggleColumn")
 
-        },
         submit(outingId){
             this.form.outingId = outingId;
             this.form.post(this.route('admin.vychadzky.prichod'), {
@@ -160,6 +209,9 @@ export default {
 
         }
     },
+    mounted(){
+    console.log(this.activities)
+        }
 
 
 }
