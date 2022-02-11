@@ -1,5 +1,6 @@
 <template   >
     <Dashboard>
+        <Head title="Vychádzky" />
 
 
         <div class="container mx-auto py-6 px-4">
@@ -145,7 +146,7 @@
 </template>
 
 <script>
-import {Link} from "@inertiajs/inertia-vue3";
+import {Head,Link} from "@inertiajs/inertia-vue3";
 import Dashboard from "@/Layouts/Admin/Dashboard";
 import ModalCreateRattingRule from "@/Components/ModalCreateRattingRule";
 
@@ -153,8 +154,8 @@ export default {
     components:{
         Dashboard,
         ModalCreateRattingRule,
-        Link
-
+        Link,
+        Head,
     },
     emits:['close'],
 

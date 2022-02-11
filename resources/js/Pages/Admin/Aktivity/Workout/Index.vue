@@ -1,6 +1,6 @@
 <template   >
     <Dashboard>
-
+        <Head title="Workout" />
 
         <div class="container mx-auto py-6 px-4">
             <h1 class="text-3xl py-4 border-b mb-10">Workout</h1>
@@ -61,10 +61,12 @@
 
 <script>
 import Dashboard from "@/Layouts/Admin/Dashboard";
+import {Head} from "@inertiajs/inertia-vue3";
 
 export default {
     components:{
         Dashboard,
+        Head
 
     },
     props:{

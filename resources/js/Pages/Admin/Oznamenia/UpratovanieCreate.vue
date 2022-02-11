@@ -1,5 +1,5 @@
 <template>
-    <Head title="Dashboard" />
+    <Head title="Upratovanie" />
 
     <Dashboard>
         <div class="container mx-auto py-4 px-4">

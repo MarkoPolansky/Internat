@@ -7,8 +7,10 @@ use App\Http\Requests\Admin\UpdateInternatistaRequest;
 use App\Models\Apartment;
 use App\Models\AvailableOuting;
 use App\Models\User;
+use App\Rules\CanAssignRole;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -49,10 +51,32 @@ class UserController extends Controller
         })->with('roles','apartment','available_outing')
             ->findOrfail($user_id);
 
+        $roles = Role::all();
+
 
         return Inertia::render('Admin/Users/Show')->with([
-            'user' => $user
+            'user' => $user,
+            'roles' => $roles
         ]);
+
+    }
+
+    public function update(Request $request, User $user)
+    {
+
+         $request->validate([
+             'name' => ['required','max:255'],
+             'roles' => ['required','array'],
+             'roles.*.id' => ['required','exists:roles,id']
+         ]);
+
+        $user->name = $request->get('name');
+
+        $user->syncRoles(collect($request->get('roles'))->pluck('id'));
+
+        $user->save();
+
+        return redirect()->route('admin.users');
 
     }
 
@@ -64,24 +88,5 @@ class UserController extends Controller
     }
 
 
-    public function update(UpdateInternatistaRequest $request, User $user)
-    {
-        $data = $request->only(['name', 'apartment','class',]);
 
-
-
-        $user->name = $data['name'];
-        $user->class = $data['class'];
-
-        if (isset($data['apartment']['id']))
-        $user->apartment_id = $data['apartment']['id'];
-
-
-        $user->save();
-
-
-
-        return redirect()->route('admin.internatnici.show',$user->id);
-
-    }
 }

@@ -1,6 +1,6 @@
 <template   >
     <Dashboard>
-
+        <Head title="Ostatné Aktivity" />
 
         <div class="container mx-auto py-6 px-4">
             <h1 class="text-3xl py-4 border-b mb-10">Ostatné Aktivity</h1>
@@ -125,7 +125,7 @@
 
 <script>
 import Dashboard from "@/Layouts/Admin/Dashboard";
-import {Link} from "@inertiajs/inertia-vue3";
+import {Head,Link} from "@inertiajs/inertia-vue3";
 import ModalAddActivity from "@/Components/ModalAddActivity";
 
 import VueMultiselect from "vue-multiselect";
@@ -136,6 +136,7 @@ export default {
         Dashboard,
         ModalAddActivity,
         Link,
+        Head,
         VueMultiselect,
     },
 

@@ -9,6 +9,7 @@ use App\Models\RatingRule;
 use App\Models\Ratting;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use Faker\Provider\cs_CZ\Text;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Inertia\Inertia;
@@ -30,18 +31,17 @@ class RattingController extends Controller
 //                   return (Carbon::parse($date->created_at)->format('W') . ' týždeň'); // grouping by months
                })->reverse();
 
-//           dd($rattings);
 
 
 
 
 
+
+//
+//
 //        $array = Collection::empty();
 //        $period = CarbonPeriod::create(Carbon::now()->subWeek(3)->startOfWeek(), '1 days', today());
 //
-//        foreach ($period as $key => $date) {
-//            $array->push($date);
-//        }
 
 
 

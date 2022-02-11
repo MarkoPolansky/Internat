@@ -1,6 +1,6 @@
 <template   >
     <Dashboard>
-
+        <Head :title="'Izba '+ apartment.name" />
 
         <div class="container mx-auto py-6 px-4">
             <h1 class="text-3xl py-4 border-b mb-10">Izba / {{apartment.name}}</h1>
@@ -56,61 +56,16 @@
                 <div class="w-full xl:w-1/2 px-3">
                     <p class="text-xl font-semibold mb-4"> Hodnotenie izby za posledné 4 týždne</p>
 
-                    <template  v-for="week in rattingByWeeks"  >
+                    <div class="flex flex-col justify-center ">
 
-                        <div class="w-full overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative mt-8 ">
-                            <table class="border-collapse table-fixed; w-full whitespace-no-wrap bg-white  relative">
-                                <thead>
-                                <tr class="text-left">
+                        <div class="w-full bg-white border rounded-lg p-4 mb-8 "  v-for="(week,index) in rattingByWeeks">
 
-                                    <th  class="w-1/2 cursor-pointer bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
-                                        Deň
-                                    </th>
-                                    <th  class="w-1/2 cursor-pointer bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
-                                        Hodnotenie
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-
-                                <template  v-for="rating in week" >
-                                    <tr  >
-                                        <td :class="[rating.edited_ratting == 100 || rating.edited_ratting == 'Bez hodnotenia'  ? ' border-green-500' : 'border-red-500 ']"
-                                            class="border-l-8 border-t "
-                                            style="border-top-color: rgb(229, 231, 235)">
-                                        <span  class=" text-gray-700 px-6 py-3 flex items-center">
-                                            {{rating.day_for_human.charAt(0).toUpperCase() + rating.day_for_human.slice(1)}}
-                                        </span>
-                                        </td>
-                                        <td  class=" border-t border-gray-200 lastName">
-                                        <span class="text-gray-700 px-6 py-3 flex items-center">
-                                            {{rating.edited_ratting}}
-                                        </span>
-                                        </td>
-                                    </tr>
-                                </template>
-
-                                <tr class="border-l-8" >
-                                    <td class=" text-md border-dotted border-t-4  border-gray-200 " >
-                                            <span class=" text-gray-700 px-6 py-3 flex ">
-                                                Priemer:
-                                            </span>
-                                    </td>
-                                    <td class=" border-t-4 border-dotted border-gray-200 ">
-                                            <span class="text-gray-700 px-6 py-3 flex items-center">
-                                                {{avg(week)}}
-                                            </span>
-                                    </td>
-                                </tr>
-
-                                </tbody>
-
-                            </table>
-
+                            <GraphRoomRatting  :ratting="week" >
+                            </GraphRoomRatting>
 
 
                         </div>
-                    </template>
+                    </div>
                 </div>
             </div>
 
@@ -125,6 +80,7 @@
 
 <script>
 import Dashboard from "@/Layouts/Admin/Dashboard";
+import GraphRoomRatting from "@/Components/GraphRoommRattingMultiple";
 import {Head, Link} from "@inertiajs/inertia-vue3";
 
 
@@ -133,6 +89,7 @@ export default {
         Dashboard,
         Link,
         Head,
+        GraphRoomRatting
     },
     props:{
         apartment: Object,

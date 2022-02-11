@@ -56,6 +56,28 @@ class DashboardController extends Controller
             }
         }
 
+        $rattings =  Ratting::whereHas('apartment',function ($q){
+            $q->whereHas('users',function ($q){
+                $q->where('id',auth()->id());
+            });
+        })->whereBetween('created_at',[Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+            ->get();
+
+
+        $rattedDays = [
+            'utorok' => 0,
+            'streda' => 0,
+            'štvrtok' => 0,
+            'piatok' => 0,
+        ];
+
+        foreach ($rattings as $ratting){
+            if (isset($rattedDays[Carbon::create($ratting->created_at)->isoformat('dddd')])){
+                $rattedDays[Carbon::create($ratting->created_at)->isoformat('dddd')]
+                    = array('ratting' =>$ratting->rating*20 , 'message' => $ratting->message )  ;
+            }
+        }
+
 
 
 

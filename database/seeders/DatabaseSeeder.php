@@ -26,8 +26,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AvailableActivitySeeder::class);
 
         $this->call(RattingSeeder::class);
-
-
+//
+//
 //            $this->call(CleaningSeeder::class);
 //            Announcement::factory(30)->create();
 //
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
 //        for($i=1;$i<100;$i++){
 //            User::find($i)->assignRole(random_int(1,3));
 //        }
-//
+
 
     }
 }

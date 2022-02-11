@@ -11,7 +11,8 @@ class Ratting extends Model
 
     protected $fillable = [
         'apartment_id',
-        'rating'
+        'rating',
+        'message'
     ];
 
     protected $casts = [

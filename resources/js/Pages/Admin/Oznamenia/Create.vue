@@ -1,5 +1,5 @@
 <template>
-    <Head title="Dashboard" />
+    <Head title="Oznámenia" />
 
     <Dashboard>
 
@@ -66,13 +66,15 @@
 
                 <div class="w-full xl:w-1/2 px-3">
                     <p class="text-xl font-semibold mb-4">Všetky oznámenia</p>
-                    <div class="w-full bg-white border rounded-lg p-4">
+                    <div class="w-full bg-white border rounded-lg p-4 overflow-y-auto max-h-192">
                         <div v-for="announcement in announcements" :key="announcement.id"
                              class="w-full bg-gray-100 border rounded-lg flex justify-between items-center px-4 py-2 mb-4">
                             <div>
                                 <p class="font-semibold text-xl">{{ announcement.title }}</p>
                                 <p> {{ announcement.body }}</p>
-                                <p v-if="announcement.number_of_days">Viditeľné ešte: {{ announcement.number_of_days }}</p>
+                                <p class="font-semibold" v-if="announcement.number_of_days">Viditeľné ešte: {{ announcement.number_of_days }}</p>
+                                <p v-else class="font-semibold" >Viditeľné do zmazania</p>
+
 
                             </div>
                             <span class="text-red-600">

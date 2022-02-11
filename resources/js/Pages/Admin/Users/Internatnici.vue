@@ -1,6 +1,6 @@
 <template   >
     <Dashboard>
-
+        <Head title="Internatisti" />
 
         <div class="container mx-auto py-6 px-4">
             <h1 class="text-3xl py-4 border-b mb-10">Internatisti</h1>
@@ -59,17 +59,17 @@
                     <tbody>
                     <template v-for="user in filteredUsers" :key="user.id">
                         <tr class="hover:bg-gray-100">
-                            <td class="border-dashed border-t border-gray-200 userId">
+                            <td class="border-dashed border-t border-gray-200 ">
                                 <Link class="text-gray-700 px-6 py-3 flex items-center" :href="route('admin.internatnici.show',user)">
                                  <span  >{{user.name}}</span>
                                 </Link>
                             </td>
-                            <td class="border-dashed border-t border-gray-200 firstName">
+                            <td class="border-dashed border-t border-gray-200 ">
                                 <Link class="text-gray-700 px-6 py-3 flex items-center" :href="route('admin.internatnici.show',user)">
                                 <span v-if="user.class" >{{user.class}}</span>
                                 </Link>
                             </td>
-                            <td class="border-dashed border-t border-gray-200 lastName">
+                            <td class="border-dashed border-t border-gray-200 ">
                                 <Link class="text-gray-700 px-6 py-3 flex items-center" :href="route('admin.internatnici.show',user)">
                                     <span  v-if="user.apartment" >{{user.apartment.name}}</span>
                                 </Link>
@@ -100,7 +100,7 @@
 import Dashboard from "@/Layouts/Admin/Dashboard";
 import Modal from "@/Components/Modal";
 import BreezeButton from "@/Components/Button";
-import {Link} from "@inertiajs/inertia-vue3";
+import {Head,Link} from "@inertiajs/inertia-vue3";
 
 
 
@@ -108,6 +108,7 @@ export default {
     components:{
         Dashboard,
         Modal,
+        Head,
         BreezeButton,
         Link
     },

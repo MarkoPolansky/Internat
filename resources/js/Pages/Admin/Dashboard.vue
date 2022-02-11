@@ -13,7 +13,7 @@
                                 <svg class="w-16 h-16  mr-4 hidden lg:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
 
                                 <div class="text-gray-700">
-                                    <p class="font-semibold text-3xl">{{ outingsCount }}</p>
+                                    <p class="font-semibold text-3xl">{{ outings.length }}</p>
                                     <p>Na vychádzkach</p>
                                 </div>
                             </div>
@@ -179,7 +179,6 @@ export default {
     props:{
         rattedRooms: Number,
         roomsCount: Number,
-        outingsCount: Number,
         outings: Object,
         availableActivities: Object,
         activities: Object,
@@ -211,7 +210,14 @@ export default {
     },
     mounted(){
     console.log(this.activities)
-        }
+    },
+
+    created(){
+        window.Echo.private('outing')
+        .listen('OutingCreated',(event) =>{
+            this.outings.unshift(event.outing)
+        })
+    }
 
 
 }

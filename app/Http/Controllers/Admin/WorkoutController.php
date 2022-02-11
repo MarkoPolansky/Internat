@@ -14,9 +14,6 @@ class WorkoutController extends Controller
     {
         $workouts = Workout::with('user')->today()->get();
 
-
-
-
         return Inertia::render('Admin/Aktivity/Workout/Index')->with([
             'workouts' => $workouts
         ]);

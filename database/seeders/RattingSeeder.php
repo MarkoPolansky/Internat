@@ -7,6 +7,7 @@ use App\Models\Ratting;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Database\Seeder;
+use Psy\Util\Str;
 use Ramsey\Collection\Collection;
 
 class RattingSeeder extends Seeder
@@ -32,6 +33,7 @@ class RattingSeeder extends Seeder
                $rattingInsertion->push([
                    'apartment_id' =>$apartment->id,
                    'rating' => random_int(1,10)/2,
+                   'message' => 'neporiadok neodhrnute zavesy neotvorene okno',
                    'created_at' => $date,
                    'updated_at' => $date
                ]);

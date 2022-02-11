@@ -1,5 +1,10 @@
 @component('mail::message')
-   # Ahoj {{$invite->name}}
+    @if(count(explode(' ',$invite->name)) > 1)
+        # Ahoj {{explode(' ',$invite->name)[0]}}
+    @else
+        # Ahoj {{$invite->name}}
+    @endif
+
     Toto je tvoja pozvánka do systému {{ config('app.name') }}
 
 @component('mail::button', ['url' => route('invite.processing',$invite->token)])

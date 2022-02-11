@@ -33,6 +33,11 @@ class RattingController extends Controller
     public function update()
     {
 
+
+        \request()->validate([
+            '*.message' => ['nullable','max:255']
+        ]);
+
         $rooms = Apartment::with('todayRatting')->get();
         $creating = \Illuminate\Support\Collection::empty();
         foreach (request()->all() as $key=>$room){
@@ -47,12 +52,14 @@ class RattingController extends Controller
 
                 $a->todayRatting->update([
                     'rating' => $room['rating'],
+                    'message' => $room['message'],
                 ]);
             }
             else{                   //creating
                 $creating->push([
                     'apartment_id' => $key,
                     'rating' => $room['rating'],
+                    'message' => $room['message'],
                     'updated_at' => now(),
                     'created_at' => now(),
                 ]);
@@ -63,4 +70,6 @@ class RattingController extends Controller
 
       return redirect()->route('admin.dashboard');
    }
+
+
 }

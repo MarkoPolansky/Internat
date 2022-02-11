@@ -10,42 +10,42 @@
 
         <div class="flex flex-wrap -mx-3 mb-20">
 
-            <div class="w-1/2 xl:w-1/4 px-3">
-                <div v-if="outing" class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
 
+            <div  class="w-1/2 xl:w-1/4 px-3">
+                <div   class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
                     <svg :class="[outing ? 'text-green-500' : '']" class="w-16 h-16  mr-4 hidden lg:block " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
 
                         <div   class="text-gray-700">
-                            <p  class="font-semibold text-3xl">Do {{ outing.available_outing.until.substring(0,5) }}</p>
-                            <p type="submit">Nezabudni sa vrátiť</p>
+                            <p v-if="outing"  class="font-semibold text-3xl">Do {{ outing.available_outing.until.substring(0,5) }}</p>
+                            <p v-if="outing" >Nezabudni svoj príchod nahlásiť</p>
+
+                            <template v-else>
+
+                                <div v-if="available_outing == null"  class="text-gray-700">
+                                    <p>Bez pridelenej vychádzky</p>
+                                </div>
+
+                                <div v-else-if="available_outing.is_late_for_outing"  class="text-gray-700">
+                                    <p  class="font-semibold text-3xl">Do {{ HoursMinutes }}</p>
+                                    <p>Neskoro na vychádzku</p>
+                                </div>
+                                <div v-else-if="available_outing.is_banned"  class="text-red-700">
+                                    <p>Vychádzky zakázané</p>
+                                </div>
+
+                                <div v-else  class="text-gray-700">
+
+                                    <p  class="font-semibold text-3xl">Do {{ HoursMinutes }}</p>
+
+                                    <button form="form" :disabled="form.processing" type="submit">Zobrať vychádzku</button>
+                                    <form id="form" method="post" @submit.prevent="submit" >
+                                    </form>
+
+                                </div>
+                            </template>
+
+
                         </div>
-                </div>
-
-                <div v-else  class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
-
-                    <svg class="w-16 h-16  mr-4 hidden lg:block " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
-
-                    <div v-if="available_outing == null"  class="text-gray-700">
-                        <p>Bez pridelenej vychádzky</p>
-                    </div>
-
-                    <div v-else-if="available_outing.is_late_for_outing"  class="text-gray-700">
-                        <p>Neskoro na vychádzku </p>
-                    </div>
-                    <div v-else-if="available_outing.is_banned"  class="text-red-700">
-                        <p>Vychádzky zakázané</p>
-                    </div>
-
-
-                    <div v-else  class="text-gray-700">
-
-                        <p  class="font-semibold text-3xl">Do {{ HoursMinutes }}</p>
-
-                        <button form="form" :disabled="form.processing" type="submit">Zobrať vychádzku</button>
-                        <form id="form" method="post" @submit.prevent="submit" >
-                        </form>
-
-                    </div>
                 </div>
             </div>
 
@@ -59,8 +59,7 @@
                         <p>Upratovanie</p>
                     </div>
                     <div v-else class="text-gray-700">
-                        <p class="font-semibold text-3xl">Výborne</p>
-                        <p>Žiadne upratovanie</p>
+                        <p>Bez upratovania</p>
                     </div>
 
 
@@ -75,6 +74,7 @@
                     </svg>
                     <div  v-if="activities.length == 0" class="text-gray-700">
                        <p>Aktivita nebola vybratá</p>
+                        <p>Hlasovaním daj najavo svoj záujem o aktivitu</p>
                     </div>
 
                     <div v-else class="text-gray-700">
@@ -89,7 +89,7 @@
                 </div>
             </div>
 
-            <div class="w-1/2 xl:w-1/4 px-3 "  >
+            <div class="w-1/2 xl:w-1/4 px-3 ">
                 <form @submit.prevent></form>
                 <div v-if="!isOnWorkout" @click="goWorkout" class="w-full bg-white hover:bg-blue-100 cursor-pointer border text-blue-400 rounded-lg flex items-center p-6">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16  mr-4 hidden lg:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -111,19 +111,14 @@
                         <p class="font-semibold text-3xl">Workout</p>
                         <p>Vrátil som sa </p>
                     </div>
-
                 </div>
-
             </div>
-
-
-
         </div>
 
         <div class="flex flex-wrap -mx-3">
 
             <div class="w-full xl:w-1/3 px-3">
-                <p class="text-xl font-semibold mb-4">Hodnotenie izby </p>
+                <p class="text-xl font-semibold mb-4">Hodnotenie izby tohto týždňa</p>
 
                 <div class="w-full bg-white border rounded-lg p-4 mb-8 xl:mb-0">
                     <GraphRoomRatting :ratting="rattedDays">
@@ -141,24 +136,21 @@
 
                     </GraphTodayActivityVoting>
 
-                    <div class="flex justify-between 2xl:px-8   " >
-
-                        <div   v-for="activity in availableActivities" :key="activity.id">
-                            <BreezeButton @click="vote(activity)"
-                                :disabled="activity.today_voters.length > 0"
+                    <div class="flex justify-between text-center gap-x-2 px-8 ">
+                        <button v-for="activity in availableActivities"
+                                @click="vote(activity)"
+                                type="submit"
+                                class="w-full mx-auto  items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150"
                                 :class="{ 'opacity-25': activityForm.processing , 'bg-chartBlue hover:bg-chartBlue cursor-default focus:border-chartBlue': activity.today_voters.length > 0  }"    >
-                                {{ activity.name }}
-                            </BreezeButton>
-
-                        </div>
-
+                            {{ activity.name }}
+                        </button>
                     </div>
                 </div>
             </div>
 
             <div class="w-full xl:w-1/3 px-3">
                 <p class="text-xl font-semibold mb-4">Oznámenia</p>
-                <div class="w-full bg-white border rounded-lg p-4">
+                <div class="w-full bg-white border rounded-lg p-4 max-h-100 overflow-y-auto">
                     <div v-for="announcement in announcements" :key="announcement.id"
                          class="w-full bg-gray-100 border rounded-lg flex justify-between items-center px-4 py-2 mb-4">
                         <div>

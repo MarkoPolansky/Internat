@@ -1,6 +1,6 @@
 <template   >
     <Dashboard>
-
+        <Head title="Hodnotenie izby" />
 
         <div class="container mx-auto  py-6 px-4">
             <h1 class="text-3xl py-4 border-b mb-10">Hodnotenie izby za posledné 4 týždne</h1>
@@ -77,13 +77,14 @@
 import Dashboard from "@/Layouts/User/Dashboard";
 import BreezeButton from "@/Components/Button";
 import GraphRoomRatting from "@/Components/GraphRoommRattingMultiple";
-import {Link} from "@inertiajs/inertia-vue3";
+import {Head,Link} from "@inertiajs/inertia-vue3";
 
 export default {
     components:{
         Dashboard,
         BreezeButton,
         Link,
+        Head,
         GraphRoomRatting
     },
     props:{

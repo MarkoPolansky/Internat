@@ -1,5 +1,5 @@
 <template>
-    <Head title="Welcome" />
+<!--    <Head title="Welcome" />-->
 
 
 
@@ -7,13 +7,13 @@
 <div class="bg-white">
     <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800 lg:pb-20 max-w-2xl mx-auto md:max-w-3xl lg:max-w-6xl">
         <div class="container flex flex-wrap justify-between items-center mx-auto">
-            <a href="#" class="flex">
-                <svg class="mr-3 h-10" viewBox="0 0 52 72" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.87695 53H28.7791C41.5357 53 51.877 42.7025 51.877 30H24.9748C12.2182 30 1.87695 40.2975 1.87695 53Z" fill="#76A9FA"/><path d="M0.000409561 32.1646L0.000409561 66.4111C12.8618 66.4111 23.2881 55.9849 23.2881 43.1235L23.2881 8.87689C10.9966 8.98066 1.39567 19.5573 0.000409561 32.1646Z" fill="#A4CAFE"/><path d="M50.877 5H23.9748C11.2182 5 0.876953 15.2975 0.876953 28H27.7791C40.5357 28 50.877 17.7025 50.877 5Z" fill="#1C64F2"/></svg>
-                <span class="self-center text-lg font-semibold whitespace-nowrap dark:text-white">FlowBite</span>
-            </a>
+            <Link :href="route('welcome')" class="flex">
+                <img class="mr-3 h-16" src="/assets/images/logo.png" alt="SPŠE Prešov">
+                <p class=" font-semibold self-center whitespace-nowrap text-2xl text-red-600 4">INTERNÁT</p>
+            </Link>
             <div class="flex md:order-2">
-                <div v-if="canLogin" >
-                    <Link v-if="$page.props.auth.user" href="/dashboard" class="text-sm text-gray-700">
+
+                    <Link v-if="$page.props.auth.user" :href="route(dashboardRoute)" class="text-sm text-gray-700">
                         <button type="button" class="flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                              <span>
                                  Domov
@@ -35,7 +35,6 @@
                         </button>
                     </Link>
 
-                </div>
             </div>
         </div>
     </nav>
@@ -46,7 +45,7 @@
                 <div class="w-full lg:w-1/2">
                     <div class="lg:max-w-lg">
                         <h1 class="text-5xl font-semibold text-gray-800 uppercase dark:text-white lg:text-6xl">
-                        Bývať na internáte nemusí byť vždy chaos
+                        Bývanie na internáte nemusí byť vždy chaos
                         </h1>
                         <p class="mt-2 text-2xl lg:text-xl text-gray-600 dark:text-gray-400">
                             SPSE-PO-Internát je riešenie ktoré uľahčí bývanie na internáte
@@ -206,10 +205,7 @@ export default {
       Footer,
     },
     props: {
-        canLogin: Boolean,
-        canRegister: Boolean,
-        laravelVersion: String,
-        phpVersion: String,
+        dashboardRoute: String,
     },
 }
 </script>

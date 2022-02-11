@@ -111,6 +111,11 @@ class InviteController extends Controller
 
         Auth::login($user);
 
+        AvailableOuting::create([
+            'user_id' => $user->id,
+            'until' => '21:30'
+        ]);
+
         if (\auth()->user()->hasRole('internatista'))
             return redirect()->route('dashboard');
         else return redirect()->route('admin.dashboard');

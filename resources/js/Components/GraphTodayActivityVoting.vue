@@ -35,6 +35,8 @@ export default {
     data() {
         return {
             option: {
+                tooltip: {
+                },
                 xAxis: {
 
                     type: 'category',

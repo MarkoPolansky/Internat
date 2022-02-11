@@ -17,6 +17,8 @@ class WorkoutController extends Controller
 
         abort_if($workout != null,404,);
 
+
+
         Workout::create([
             'user_id' => auth()->id(),
         ]);
@@ -35,6 +37,7 @@ class WorkoutController extends Controller
 
         $workout->arrived = now();
         $workout->save();
+
 
         return redirect()->route('dashboard');
 

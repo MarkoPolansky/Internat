@@ -70,7 +70,7 @@ class InternatniciController extends Controller
 
         $user->save();
 
-        return redirect()->route('admin.internatnici.show',$user->id);
+        return redirect()->route('admin.internatnici');
 
     }
 }

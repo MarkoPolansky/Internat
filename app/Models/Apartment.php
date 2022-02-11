@@ -10,6 +10,8 @@ class Apartment extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function users()
     {
         return $this->hasMany(User::class);
@@ -22,7 +24,7 @@ class Apartment extends Model
     public function lastMonthRattings()
     {
         return $this->hasMany(Ratting::class)
-            ->whereDate('created_at','>',Carbon::today()->subMonth()->startOfWeek());
+            ->whereDate('created_at','>',Carbon::today()->subWeek(3)->startOfWeek());
 
     }
 

@@ -17,6 +17,7 @@ class CreateRattingsTable extends Migration
             $table->id();
             $table->foreignId('apartment_id')->constrained()->cascadeOnDelete();
             $table->decimal('rating',2,1)->nullable();
+            $table->string('message')->nullable();
             $table->timestamps();
         });
     }

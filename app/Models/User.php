@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\Auth\QueuedResetPassword;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -73,7 +74,9 @@ class User extends Authenticatable
 
 
 
-
-
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new QueuedResetPassword($token));
+    }
 
 }

@@ -5,8 +5,10 @@
         <div class="flex flex-wrap">
             <div class="w-1/2 md:w-1/3 lg:w-64 fixed md:top-0 md:left-0 h-screen lg:block bg-mainGray border-r z-30 overflow-auto" :class="sideBarOpen ? '' : 'hidden'" id="main-nav">
                 <div class="w-full h-20 border-b flex px-4 items-center mb-8">
-                    <img class="w-12 h-12" src="https://spse-po.sk/assets/images/logo.png" alt="SPŠE Prešov">
-                    <p class="font-semibold text-3xl text-red-600 pl-4">INTERNÁT</p>
+                    <Link :href="route('admin.dashboard')" class="flex">
+                        <img class="h-16" src="/assets/images/logo.png" alt="SPŠE Prešov">
+                        <p class="font-semibold self-center text-3xl text-red-600 pl-4">INTERNÁT</p>
+                    </Link>
                 </div>
 
                 <div class="mb-4 px-4">
@@ -29,15 +31,17 @@
 
                     </Link>
 
-
-                    <Link :href="route('admin.izby')" >
-                        <div :class="[route().current('admin.izby') ? 'bg-gray-200' : '']" class="w-full flex items-center text-blue-400 h-10 pl-4 hover:bg-gray-200 rounded-lg cursor-pointer">
+                    <Link :href="route('admin.workout')">
+                        <div :class="[route().current('admin.workout') ? 'bg-gray-200' : '']" class="w-full flex items-center text-blue-400 h-10 pl-4 hover:bg-gray-200 rounded-lg cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>
-                            <span class="text-gray-700">Izby</span>
+                            <span class="text-gray-700">Workout</span>
                         </div>
                     </Link>
+
+
+
 
 
                     <Link :href="route('admin.internatnici')" >
@@ -48,11 +52,11 @@
                         </div>
                     </Link>
 
-                    <Link :href="route('admin.users')" >
+                    <Link v-if="$page.props.auth.user.roles.some(e => e.id === 3)" :href="route('admin.users')" >
 
                         <div :class="[route().current('admin.users') ? 'bg-gray-200' : '']" class="w-full flex items-center text-blue-400 h-10 pl-4 hover:bg-gray-200 rounded-lg cursor-pointer">
                             <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                            <span class="text-gray-700">Správa</span>
+                            <span class="text-gray-700">Administratíva</span>
 
                         </div>
                     </Link>
@@ -60,7 +64,16 @@
 
                 </div>
                 <div class="mb-4 px-4">
-                    <p class="pl-4 text-sm font-semibold mb-1">Hodnotenie Izieb</p>
+                    <p class="pl-4 text-sm font-semibold mb-1 ">Izby</p>
+
+                    <Link :href="route('admin.izby')" >
+                        <div :class="[route().current('admin.izby') ? 'bg-gray-200' : '']" class="w-full flex items-center text-blue-400 h-10 pl-4 hover:bg-gray-200 rounded-lg cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                            <span class="text-gray-700">Všetky Izby</span>
+                        </div>
+                    </Link>
 
 
                     <Link :href="route('admin.hodnotenie.create')">
@@ -70,51 +83,43 @@
                         </div>
                     </Link>
 
-                    <Link :href="route('admin.hodnotenie.create')">
-                        <div :class="[route().current('admin.hodnotenie.create') ? 'bg-gray-200' : '']" class="w-full flex items-center text-blue-400 h-10 pl-4 hover:bg-gray-200 rounded-lg cursor-pointer">
-                            <svg class="h-6 w-6 fill-current mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"/></svg>
-                            <span class="text-gray-700">Hodnotenia</span>
-                        </div>
-                    </Link>
-
-                    <Link :href="route('admin.hodnotenie.create')">
-                        <div :class="[route().current('admin.hodnotenie.create') ? 'bg-gray-200' : '']" class="w-full flex items-center text-blue-400 h-10 pl-4 hover:bg-gray-200 rounded-lg cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6  mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-                            <span class="text-gray-700">Štatistiky</span>
-                        </div>
-                    </Link>
-
                     </div>
                 <div class="mb-4 px-4">
                     <p class="pl-4 text-sm font-semibold mb-1">AKTIVITY</p>
-                    <Link :href="route('admin.workout')">
-                        <div :class="[route().current('admin.workout') ? 'bg-gray-200' : '']" class="w-full flex items-center text-blue-400 h-10 pl-4 hover:bg-gray-200 rounded-lg cursor-pointer">
-                            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
-                            <span class="text-gray-700">Workout</span>
+
+                    <Link :href="route('admin.availableActivities.index')">
+                        <div :class="[route().current('admin.availableActivities.index') ? 'bg-gray-200' : '']" class="w-full flex items-center text-blue-400 h-10 pl-4 hover:bg-gray-200 rounded-lg cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                            </svg>
+                            <span class="text-gray-700">Dostupné aktivity</span>
                         </div>
                     </Link>
 
                     <Link :href="route('admin.activity.index')">
                         <div :class="[route().current('admin.activity.index') ? 'bg-gray-200' : '']" class="w-full flex items-center text-blue-400 h-10 pl-4 hover:bg-gray-200 rounded-lg cursor-pointer">
                             <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
-                            <span class="text-gray-700">Ostatné</span>
+                            <span class="text-gray-700">Dnešná aktivita</span>
                         </div>
                     </Link>
 
                 </div>
                 <div class="mb-4 px-4">
                     <p class="pl-4 text-sm font-semibold mb-1">OZNÁMENIA</p>
-                    <Link :href="route('admin.upratovanie.create')">
-                        <div :class="[route().current('admin.upratovanie.create') ? 'bg-gray-200' : '']" class="w-full flex items-center text-blue-400 h-10 pl-4 hover:bg-gray-200 rounded-lg cursor-pointer">
-                            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
-                            <span class="text-gray-700">Upratovanie</span>
-                        </div>
-                    </Link>
 
                     <Link :href="route('admin.oznamenie.create')">
                         <div :class="[route().current('admin.oznamenie.create') ? 'bg-gray-200' : '']" class="w-full flex items-center text-blue-400 h-10 pl-4 hover:bg-gray-200 rounded-lg cursor-pointer">
                             <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             <span class="text-gray-700">Pridať Oznamenie</span>
+                        </div>
+                    </Link>
+
+                    <Link :href="route('admin.upratovanie.create')">
+                        <div :class="[route().current('admin.upratovanie.create') ? 'bg-gray-200' : '']" class="w-full flex items-center text-blue-400 h-10 pl-4 hover:bg-gray-200 rounded-lg cursor-pointer">
+                            <svg  class="w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                            </svg>
+                            <span class="text-gray-700">Upratovanie</span>
                         </div>
                     </Link>
                 </div>
@@ -162,9 +167,6 @@
 
                                     <template #content>
                                         <BreezeDropdownLink :href="route('logout')" method="post" as="button">
-                                            Profil
-                                        </BreezeDropdownLink>
-                                        <BreezeDropdownLink :href="route('logout')" method="post" as="button">
                                             Odhlásiť sa
                                         </BreezeDropdownLink>
 
@@ -204,6 +206,8 @@ import BreezeDropdown from '@/Components/Dropdown.vue'
 import BreezeDropdownLink from '@/Components/DropdownLink.vue'
 import BreezeNavLink from '@/Components/NavLink.vue'
 
+require('@/echo')
+
 export default {
     components: {
         Sidebar,
@@ -220,6 +224,8 @@ export default {
             sideBarOpen: false
         }
     },
+
+
 
 
 }

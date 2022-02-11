@@ -1,9 +1,9 @@
 <template   >
     <Dashboard>
-
+        <Head :title="'Internatnik '+ user.name" />
 
         <div class="container mx-auto py-6 px-4">
-            <h1 class="text-3xl py-4 border-b mb-10">Internatnici / {{user.name}}</h1>
+            <h1 class="text-3xl py-4 border-b mb-10">Internatnik / {{user.name}}</h1>
                 <div class="flex flex-wrap -mx-3">
                     <div class="w-full xl:w-1/2 px-3">
                         <p class="text-xl font-semibold mb-4">Osobné údaje</p>
@@ -13,7 +13,6 @@
                             <p class="text-green-500 mb-4" v-if="form.wasSuccessful">
                                 Úspešne uložené
                             </p>
-
 
 
                             <form @submit.prevent="saveUser">
@@ -84,6 +83,9 @@
                                     <BreezeLabel for="until" value="Do" />
                                     <BreezeInput id="until" type="time" class="mt-1 block w-full" v-model="available_outing_form.until"  />
                                 </div>
+                                <p class="text-sm">
+                                    Internatnik dostane každý týždeň novú predĺženú vychádzku na základe hodnotenia izby
+                                </p>
 
 
                                 <div class="flex items-center justify-between mt-4">

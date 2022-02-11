@@ -26,21 +26,23 @@ class DashboardController extends Controller
 
        $rattedRooms = Ratting::whereDate('created_at', today())->where('rating','!=',null)->count();
        $roomsCount = Apartment::count();
-       $outingsCount = Outing::whereDate('created_at', today())->where('arrived', null)->count();
 
          $outings = Outing::with('user','available_outing')
              ->whereDate('created_at', today())
              ->where('arrived', null)
+             ->latest()
              ->get();
 
         $workouts = Workout::with('user')->today()->where('arrived',null)->latest()->get();
 
 
 
+
+
+
         return Inertia::render('Admin/Dashboard')->with([
             'rattedRooms' => $rattedRooms,
             'roomsCount' => $roomsCount,
-            'outingsCount' => $outingsCount,
             'outings' => $outings,
             'availableActivities' => $availableActivities,
             'activities' => $activities,

@@ -1,9 +1,9 @@
 <template   >
+    <Head :title="'Administratíva '+ user.name" />
+
     <Dashboard>
-
-
         <div class="container mx-auto py-6 px-4">
-            <h1 class="text-3xl py-4 border-b mb-10">Správa / {{user.name}}</h1>
+            <h1 class="text-3xl py-4 border-b mb-10">Administratíva / {{user.name}}</h1>
             <div class="flex flex-wrap -mx-3">
                 <div class="w-full xl:w-1/2 px-3">
                     <p class="text-xl font-semibold mb-4">Osobné údaje</p>
@@ -13,18 +13,33 @@
                         <p class="text-green-500 mb-4" v-if="form.wasSuccessful">
                             Úspešne uložené
                         </p>
-
-
-
                         <form @submit.prevent="saveUser">
-
-
-
                             <div class="block">
                                 <BreezeLabel for="name" value="Meno" />
                                 <BreezeInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required   />
                             </div>
 
+                            <div class="block mt-4">
+                                <label class="multiselect">Roly</label>
+
+                                <VueMultiselect
+                                    v-model="form.roles"
+                                    :options="roles"
+                                    :multiple="true"
+                                    :close-on-select="false"
+                                    :clear-on-select="false"
+                                    :searchable="false"
+                                    placeholder="Vybrať"
+                                    label="name"
+                                    track-by="name"
+                                    :preselect-first="true"
+                                    selectedLabel="Pridaný"
+                                    selectLabel="Enter pre pridanie"
+                                    deselectLabel="Enter pre odobratie"
+                                    selectGroupLabel="Enter pre pridanie skupiny"
+                                    deselectGroupLabel="Enter pre odobratie skupiny">
+                                </VueMultiselect>
+                            </div>
 
 
                             <div class="flex items-center justify-end mt-4">
@@ -94,6 +109,7 @@ export default {
     },
     props:{
         user: Object,
+        roles: Object
     },
 
     emits:['close'],
@@ -101,6 +117,7 @@ export default {
         return {
             form: this.$inertia.form({
                 name:'',
+                roles:[],
             }),
             showingDeleteModal: false,
 
@@ -109,8 +126,7 @@ export default {
 
     methods: {
         saveUser() {
-            // console.log(this.form)
-            this.form.put(this.route('admin.internatnici.update',this.user),{
+            this.form.put(this.route('admin.users.update',this.user),{
                 preserveScroll: true
             })
         },
@@ -118,6 +134,7 @@ export default {
 
     created(){
         this.form.name = this.user.name
+        this.form.roles = this.user.roles
     }
 
 
@@ -126,5 +143,18 @@ export default {
 </script>
 
 <style src="vue-multiselect/dist/vue-multiselect.css">
+</style>
+
+<style>
+.multiselect__tag {
+    background-color: #3869d4;
+}
+
+.multiselect__option--highlight{
+    background-color: #3869d4;
+}
+.multiselect__option--highlight::after{
+    background-color: #3869d4;
+}
 </style>
 

@@ -1,9 +1,8 @@
 <template   >
     <Dashboard>
-
-
+        <Head title="Administratíva" />
         <div class="container mx-auto py-6 px-4">
-            <h1 class="text-3xl py-4 border-b mb-10">Správa</h1>
+            <h1 class="text-3xl py-4 border-b mb-10">Administratíva</h1>
 
 
 
@@ -96,13 +95,14 @@
 import Dashboard from "@/Layouts/Admin/Dashboard";
 import Modal from "@/Components/Modal";
 import BreezeButton from "@/Components/Button";
-import {Link} from "@inertiajs/inertia-vue3";
+import {Head,Link} from "@inertiajs/inertia-vue3";
 
 
 
 export default {
     components:{
         Dashboard,
+        Head,
         Modal,
         BreezeButton,
         Link

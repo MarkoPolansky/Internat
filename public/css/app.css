@@ -32497,6 +32497,10 @@ body {
   max-height: 48rem;
 }
 
+.max-h-100{
+  max-height: 28rem;
+}
+
 /*Works on Firefox*/
 
 * {

@@ -40,8 +40,16 @@ export default {
                     left: 'right',
                 },
                 tooltip: {
+                    trigger: 'axis',
+                    extraCssText: "max-width:300px; white-space:pre-wrap;",
+                    position: function (pos, params, el, elRect, size) {
+                        var obj = { top: 10 };
+                        obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 30;
+                        return obj;
+                    },
                 },
-                xAxis: {
+
+            xAxis: {
                     type: 'category',
                     data: Object.keys(this.ratting).map((item) =>
                     {return item.charAt(0).toUpperCase() + item.substr(1,2)})
@@ -53,31 +61,48 @@ export default {
                         max: 100,
                         min: 0,
                     },
-                series:
+                series:[
                     {
+                        name: 'Body: ',
                         data: [],
                         type: 'bar',
                         showBackground: true,
+                        barWidth: '70%',
                         backgroundStyle: {
                             color: 'rgba(180, 180, 180, 0.2)'
                         },
                         color:'#dc2626'
+                    },
+                    {
+                        name: 'Stratené body za:',
+                        data: [],
+                        type: 'bar',
+                        barWidth: '0%',
+                        color:'#dc2626'
                     }
+                ]
 
             }
         };
     },
 
     created() {
-        this.option.title.text = 'Priemer: ' + this.avg(this.ratting)
+        this.option.title.text = 'Priemer: ' + this.avg(Object.values(this.ratting))
 
-        this.option.series.data = Object.values(this.ratting).map((ratting) =>{
-            return ratting == 100 ? {
-                value: ratting,
+        this.option.series[0].data = Object.values(this.ratting).map((ratting) =>{
+            return ratting.ratting == 100 ? {
+                value: ratting.ratting,
                 itemStyle: {
                     color: '#3490dc'
                 }
-            } : ratting
+            } : ratting.ratting
+        })
+
+        this.option.series[1].data = Object.values(this.ratting).map((ratting) =>{
+            console.log(ratting.message)
+            return {
+                value: ratting.message,
+            }
         })
     },
 
@@ -85,11 +110,11 @@ export default {
     methods:{
         avg(week){
             let sum = 0
-            let count = 0;
-            Object.values(week).forEach((ratting) =>{
-                typeof ratting === 'number' ? (sum += ratting, count++) : sum ;
+            let count =0;
+            week.forEach((day) =>{
+                typeof day.ratting === 'number' ? (sum += day.ratting, count++) : sum ;
             })
-            return  sum == 0 ? 'Bez hodnotenia' : sum/count
+            return  sum == 0 ? 'Bez hodnotenia' : Math.round((sum/count)*100)/100
 
         }
 

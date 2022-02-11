@@ -30,6 +30,8 @@ class OutingController extends Controller
             ->get();
 
 
+
+
         $ratingRules = RatingRule::orderByDesc('min_rating')->get()->groupBy(function ($class){
             return ($class->class . ' Skupina');
         });

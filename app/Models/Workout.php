@@ -16,7 +16,8 @@ class Workout extends Model
     ];
 
     protected $casts = [
-        'created_at' => 'datetime:Y-m-d H:i:s'
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'arrived'    => 'datetime:Y-m-d H:i:s',
     ];
 
 
@@ -28,6 +29,12 @@ class Workout extends Model
     public function scopeToday($query)
     {
         return $query->whereDate('created_at', Carbon::today());
+    }
+
+
+    protected function serializeDate(\DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 
 //
