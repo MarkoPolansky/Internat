@@ -99,7 +99,6 @@ export default {
         })
 
         this.option.series[1].data = Object.values(this.ratting).map((ratting) =>{
-            console.log(ratting.message)
             return {
                 value: ratting.message,
             }

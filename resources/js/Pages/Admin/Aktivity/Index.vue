@@ -158,12 +158,6 @@ export default {
         }
     },
 
-    methods:{
-        deleteActivity(activity_id){
-            console.log(activity_id)
-        }
-    },
-
 
 }
 </script>

@@ -24,20 +24,24 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesAndPermissionsSeeder::class);
         $this->call(ApartmentSeeder::class);
         $this->call(AvailableActivitySeeder::class);
-
         $this->call(RattingSeeder::class);
+        $this->call(UserSeeder::class);
+
 //
 //
-//            $this->call(CleaningSeeder::class);
-//            Announcement::factory(30)->create();
+//
+//        $this->call(CleaningSeeder::class);
+//        Announcement::factory(30)->create();
 //
 //        User::factory(110)->create();
 //        Ratting::factory(300)->create();
 //        AvailableOuting::factory(100)->create();
 //        Outing::factory(20)->create();
+
+
+//        User::factory(30)->create();
 //
-//
-//        for($i=1;$i<100;$i++){
+//                for($i=1;$i<100;$i++){
 //            User::find($i)->assignRole(random_int(1,3));
 //        }
 

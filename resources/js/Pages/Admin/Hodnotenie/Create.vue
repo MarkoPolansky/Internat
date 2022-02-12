@@ -132,7 +132,6 @@ export default {
                 this.form[room.id] = {'rating': null,'ratingId': null,'message':null}
         })
 
-        console.log(this.form)
     }
 
 

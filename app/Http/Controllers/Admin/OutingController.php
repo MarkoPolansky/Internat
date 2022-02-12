@@ -34,7 +34,8 @@ class OutingController extends Controller
 
         $ratingRules = RatingRule::orderByDesc('min_rating')->get()->groupBy(function ($class){
             return ($class->class . ' Skupina');
-        });
+        })->sort();
+
 
         return Inertia::render('Admin/Vychadzky/Index')->with([
             'outings' => $outings,

@@ -114,13 +114,6 @@ export default {
             }
         },
 
-        submit(){
-            console.log(this.form)
-            // this.form.post(this.route('admin.activity.store'),{
-            //     onSuccess: () => this.$emit('closeEdit')
-            // })
-        },
-
        updated() {
             this.form.acitivy = {...this.availableActivity}
        }

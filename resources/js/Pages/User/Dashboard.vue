@@ -247,10 +247,7 @@ export default {
         }
     },
 
-    mounted(){
-        console.log(this.isOnWorkout)
-        console.log(this.available_outing)
-    }
+
 
 
 

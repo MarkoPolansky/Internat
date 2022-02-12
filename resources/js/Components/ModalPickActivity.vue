@@ -174,9 +174,7 @@ export default {
         },
     },
 
-    mounted() {
-        console.log(this.availableActivities)
-    }
+
 
 
 }

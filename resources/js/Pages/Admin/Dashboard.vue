@@ -208,9 +208,6 @@ export default {
 
         }
     },
-    mounted(){
-    console.log(this.activities)
-    },
 
     created(){
         window.Echo.private('outing')

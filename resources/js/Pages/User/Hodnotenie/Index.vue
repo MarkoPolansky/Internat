@@ -103,13 +103,6 @@ export default {
         }
 
     },
-
-
-    mounted(){
-        console.log(this.rattings)
-        console.log(Object.entries(this.rattings))
-
-    }
 }
 </script>
 

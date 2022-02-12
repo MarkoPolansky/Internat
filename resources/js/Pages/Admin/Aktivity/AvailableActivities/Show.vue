@@ -1,12 +1,12 @@
 <template   >
     <Dashboard>
-        <Head title="Ostatné Aktivity" />
+        <Head title="Dostupná aktivita" />
 
         <div class="container mx-auto py-6 px-4">
-            <h1 class="text-3xl py-4 border-b mb-10">Ostatné Aktivity </h1>
+            <h1 class="text-3xl py-4 border-b mb-10">Dostupná aktivita </h1>
             <div class="flex flex-wrap -mx-3">
                 <div class="w-full xl:w-1/2 px-3">
-                    <p class="text-xl font-semibold mb-4">{{activity.available_activity.name}}</p>
+                    <p class="text-xl font-semibold mb-4">{{availableActivity.name}}</p>
 
                     <div class="w-full bg-white border rounded-lg p-4 mb-8 xl:mb-0">
                         <BreezeValidationErrors class="mb-4" />
@@ -15,20 +15,17 @@
                         </p>
 
                         <form @submit.prevent="submit">
-                            <div class="block ">
-                                <BreezeLabel for="starts_at" value="Od" />
-                                <BreezeInput id="visible_until" type="time" class="mt-1 block w-full" v-model="form.starts_at"     />
+
+                            <div>
+                                <BreezeLabel for="name" value="Názov Aktivity" />
+                                <BreezeInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required  />
                             </div>
 
-                            <div class="block mt-4">
-                                <BreezeLabel for="ends_at" value="Do" />
-                                <BreezeInput id="ends_at" type="time" class="mt-1 block w-full" v-model="form.ends_at"     />
-                            </div>
 
                             <div class="flex items-center justify-end mt-4">
 
-                                <BreezeButton @click="deleteActivity"    type="button"  class="ml-4 bg-red-600 hover:bg-red-500 text-black"  :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                                   Vymazať
+                                <BreezeButton @click="deleteActivity"  type="button"  class="ml-4 bg-red-600 hover:bg-red-500 text-black"  :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                    Vymazať
                                 </BreezeButton>
 
 
@@ -71,31 +68,29 @@ export default {
         VueMultiselect
     },
     props:{
-        activity: Object,
+        availableActivity: Object,
     },
     data() {
         return {
             form: this.$inertia.form({
-                starts_at:'',
-                ends_at:'',
+                name:'',
             }),
         }
     },
 
     methods: {
         submit() {
-            this.form.put(this.route('admin.activity.update',this.activity.id),{
+            this.form.put(this.route('admin.availableActivities.update',this.availableActivity.id),{
                 preserveScroll: true
             })
         },
         deleteActivity(){
-            this.$inertia.delete(this.route('admin.activity.destroy',this.activity.id))
+            this.$inertia.delete(this.route('admin.availableActivities.destroy',this.availableActivity.id))
         }
     },
 
     created(){
-        this.form.starts_at = this.activity.starts_at
-        this.form.ends_at = this.activity.ends_at
+        this.form.name = this.availableActivity.name
     }
 
 

@@ -180,7 +180,6 @@ export default {
 
     methods: {
         saveUser() {
-            // console.log(this.form)
             this.form.put(this.route('admin.internatnici.update',this.user),{
                 preserveScroll: true
             })

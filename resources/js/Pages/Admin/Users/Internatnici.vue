@@ -178,7 +178,6 @@ export default {
             })
         },
         sortByApartment(){
-            console.log(this.users)
             this.isSortedByApartment = !this.isSortedByApartment
             this.users.sort((a,b) =>{
                 let fa = a.apartment_id,

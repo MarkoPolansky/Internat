@@ -184,9 +184,7 @@ export default {
         }
     },
 
-    mounted(){
-        console.log(Object.keys(this.ratingRules))
-    }
+
 
 
 
