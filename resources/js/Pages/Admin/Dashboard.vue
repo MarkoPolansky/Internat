@@ -5,9 +5,9 @@
         <div class="p-6  mb-20">
 
 
-            <div class="flex flex-wrap -mx-3 mb-20">
+            <div class="flex flex-wrap sm:flex-row flex-col  mb-20">
 
-                    <div class="w-1/2 xl:w-1/4 px-3">
+                    <div class="sm:w-1/2 w-full  xl:w-1/4 px-3">
                         <Link :href="route('admin.vychadzky')">
                             <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
                                 <svg class="w-16 h-16  mr-4 hidden lg:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
@@ -22,7 +22,7 @@
 
 
 
-                    <div class="w-1/2 xl:w-1/4 px-3">
+                    <div class="sm:w-1/2 w-full  xl:w-1/4 px-3">
                         <Link :href="route('admin.hodnotenie.create')">
                             <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16  mr-4 hidden lg:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -37,8 +37,8 @@
                     </div>
 
 
-                <div class="w-1/2 xl:w-1/4 px-3">
-                    <div v-if="activities.length == 0"  class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6" >
+                <div class="sm:w-1/2 w-full  xl:w-1/4 px-3">
+                    <div v-if="activities.length == 0"  class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0" >
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16  mr-4 hidden lg:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
                         </svg>
@@ -51,7 +51,7 @@
 
                     <Link v-else  :href="route('admin.activity.index')">
 
-                        <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6">
+                        <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16  mr-4 hidden lg:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
                             </svg>
@@ -72,7 +72,7 @@
                 </div>
 
 
-                    <div class="w-1/2 xl:w-1/4 px-3">
+                    <div class="sm:w-1/2 w-full  xl:w-1/4 px-3">
                         <Link :href="route('admin.workout')">
                         <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16  mr-4 hidden lg:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">

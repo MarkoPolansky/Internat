@@ -5,6 +5,7 @@
 @import 'tailwindcss/utilities';
 
 body {
+
     font-family: Poppins, sans-serif;
 }
 .max-h-192{
@@ -16,6 +17,7 @@ body {
 
  /*Works on Firefox*/
 * {
+
     scrollbar-width: thin;
     /*scrollbar-color: blue orange;*/
     /*border-radius: 20px;*/

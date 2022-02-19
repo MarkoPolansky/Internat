@@ -50,6 +50,9 @@ export default {
                 },
 
             xAxis: {
+                axisPointer: {
+                    type: "none"
+                },
                     type: 'category',
                     data: Object.keys(this.ratting).map((item) =>
                     {return item.charAt(0).toUpperCase() + item.substr(1,2)})
