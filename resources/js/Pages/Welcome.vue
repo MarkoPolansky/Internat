@@ -68,7 +68,7 @@
         </div>
         <div class="relative max-w-screen-xl mx-auto pl-4 md:px-8">
             <div class="shadow-2xl rounded-l-xl overflow-hidden md:rounded-xl">
-                <img class="w-full overflow-hidden" style="min-width: 740px;" src="/assets/images/User_Dashboard.png" alt="Envoyer Screenshot">
+                <img class="w-full overflow-hidden" style="min-width: 200px;" src="/assets/images/User_Dashboard.png" >
             </div>
         </div>
     </section>
