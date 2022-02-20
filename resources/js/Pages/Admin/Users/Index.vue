@@ -6,7 +6,7 @@
 
 
 
-            <div class="mb-4 flex justify-between items-center">
+            <div class="mb-4 flex justify-between items-center mb-8 xl:mb-0">
                 <div class="flex-1 pr-4 ">
                     <div class="relative md:w-1/3">
                         <input v-model="search" type="search"
@@ -40,13 +40,13 @@
                     <thead>
                     <tr class="text-left">
 
-                        <th @click="sortByName" class="cursor-pointer bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
+                        <th @click="sortByName" class="w-2/5 cursor-pointer bg-gray-100 sticky top-0 border-b border-gray-200  px-3 md:px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
                             Meno
                         </th>
-                        <th  class="cursor-pointer bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
+                        <th  class="w-2/5 cursor-pointer bg-gray-100 sticky top-0 border-b border-gray-200  px-3 md:px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
                             Rola
                         </th>
-                        <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
+                        <th class="w-1/5 bg-gray-100 sticky top-0 border-b border-gray-200  px-3 md:px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
 
                         </th>
 
@@ -56,13 +56,13 @@
                     <template v-for="user in filteredUsers" :key="user.id">
                         <tr class="hover:bg-gray-100">
                             <td class="border-dashed border-t border-gray-200 ">
-                                <Link class="text-gray-700 px-6 py-3 flex items-center" :href="route('admin.users.show',user)">
+                                <Link class="text-gray-700  px-3 md:px-6 py-3 flex items-center" :href="route('admin.users.show',user)">
                                     <span  >{{user.name}}</span>
                                 </Link>
                             </td>
 
                             <td class="border-dashed border-t border-gray-200 ">
-                                <Link class="text-gray-700 px-6 py-3 flex flex justify-start" :href="route('admin.users.show',user)">
+                                <Link class="text-gray-700  px-3 md:px-6 py-3 flex flex justify-start" :href="route('admin.users.show',user)">
                                         <div v-for="role in user.roles" :key="role.id"
                                              :class="[role.id == 1 ? 'bg-blue-600 hover:bg-blue-700': 'bg-red-600 hover:bg-red-700' ]"
                                               class="mr-1 rounded-xl border-transparent text-sm p-1 shadow-sm text-white  ">
@@ -70,7 +70,7 @@
                                 </Link>
                             </td>
                             <td class="border-dashed border-t border-gray-200 ">
-                                <Link class="text-gray-700 px-6 py-3 flex justify-end" :href="route('admin.users.show',user)">
+                                <Link class="text-gray-700  px-3 md:px-6 py-3 flex justify-end" :href="route('admin.users.show',user)">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                     </svg>

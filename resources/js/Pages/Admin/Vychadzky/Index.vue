@@ -7,7 +7,7 @@
             <h1 class="text-3xl py-4 border-b mb-10">Vychádzky</h1>
             <div class="flex flex-wrap -mx-3">
 
-                <div class="w-full xl:w-1/3 px-3 mt-4">
+                <div class="w-full xl:w-1/3 px-3  mb-8 xl:mb-0">
                     <p class="text-xl font-semibold mb-4">Na vychádzkach </p>
 
                     <div class="w-full bg-white border rounded-lg p-4">
@@ -32,7 +32,7 @@
 
 
 
-                <div class="w-full xl:w-1/3 px-3 mt-4">
+                <div class="w-full xl:w-1/3 px-3  mb-8 xl:mb-0">
                     <p class="text-xl font-semibold mb-4">Príchod</p>
 
                     <div class="w-full bg-white border rounded-lg p-4">
@@ -51,7 +51,7 @@
                 </div>
 
 
-                <div class="w-full xl:w-1/3 px-3 mt-4">
+                <div class="w-full xl:w-1/3 px-3 mb-8 xl:mb-0">
                     <div class="flex gap-4 mb-12">
                         <p class="text-xl font-semibold mb-4">Predlžené vychádzky podľa priemeru hodnotenia izby za minulý týždeň</p>
 
@@ -94,17 +94,17 @@
 
                                         <td  class=" border-t border-gray-200 ">
                                             <Link class="text-gray-700 px-6  flex items-center" :href="route('admin.rating-rule.show',rating.id)">
-                                                <span v-if="index == 0" class="text-gray-700 px-6 py-3 flex items-center">
+                                                <span v-if="index == 0" class="text-gray-700 md:px-6 py-3 flex items-center">
                                                    100 - {{rating.edited_min_rating}}
                                                 </span>
-                                                <span v-else class="text-gray-700 px-6 py-3 flex items-center">
+                                                <span v-else class="text-gray-700 md:px-6 py-3 flex items-center">
                                                    {{group[index-1].edited_min_rating}} - {{rating.edited_min_rating}}
                                                 </span>
                                             </Link>
                                         </td>
 
                                         <td  class=" border-t border-gray-200 ">
-                                            <Link class="text-gray-700 px-6  flex items-center" :href="route('admin.rating-rule.show',rating.id)">
+                                            <Link class="text-gray-700 md:px-6  flex items-center" :href="route('admin.rating-rule.show',rating.id)">
                                                 <span class="text-gray-700 px-6 py-3 flex items-center">
                                                     {{rating.until.substring(0,5)}}
                                                 </span>
@@ -112,7 +112,7 @@
                                         </td>
 
                                         <td class=" border-t  border-gray-200 ">
-                                            <Link class="text-gray-700 px-6  flex items-center" :href="route('admin.rating-rule.show',rating.id)">
+                                            <Link class="text-gray-700 md:px-6 flex items-center" :href="route('admin.rating-rule.show',rating.id)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                                 </svg>

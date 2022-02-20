@@ -41,16 +41,16 @@
                     <thead>
                     <tr class="text-left">
 
-                        <th @click="sortByName" class="cursor-pointer bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
+                        <th @click="sortByName" class="cursor-pointer bg-gray-100 sticky top-0 border-b border-gray-200 px-3 md:px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
                             Meno
                         </th>
-                        <th @click="sortByClass" class="cursor-pointer bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
+                        <th @click="sortByClass" class="cursor-pointer bg-gray-100 sticky top-0 border-b border-gray-200 px-3 md:px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
                             Skupina
                         </th>
-                        <th  @click="sortByApartment" class="cursor-pointer bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
+                        <th  @click="sortByApartment" class="cursor-pointer bg-gray-100 sticky top-0 border-b border-gray-200 px-3 md:px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
                             Izba
                         </th>
-                        <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
+                        <th class="bg-gray-100 sticky top-0 border-b border-gray-200  px-3 md:px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-md">
 
                         </th>
 
@@ -60,22 +60,22 @@
                     <template v-for="user in filteredUsers" :key="user.id">
                         <tr class="hover:bg-gray-100">
                             <td class="border-dashed border-t border-gray-200 ">
-                                <Link class="text-gray-700 px-6 py-3 flex items-center" :href="route('admin.internatnici.show',user)">
+                                <Link class="text-gray-700  px-3 md:px-6 py-3 flex items-center" :href="route('admin.internatnici.show',user)">
                                  <span  >{{user.name}}</span>
                                 </Link>
                             </td>
                             <td class="border-dashed border-t border-gray-200 ">
-                                <Link class="text-gray-700 px-6 py-3 flex items-center" :href="route('admin.internatnici.show',user)">
+                                <Link class="text-gray-700  px-3 md:px-6 py-3 flex items-center" :href="route('admin.internatnici.show',user)">
                                 <span v-if="user.class" >{{user.class}}</span>
                                 </Link>
                             </td>
                             <td class="border-dashed border-t border-gray-200 ">
-                                <Link class="text-gray-700 px-6 py-3 flex items-center" :href="route('admin.internatnici.show',user)">
+                                <Link class="text-gray-700  px-3 md:px-6 py-3 flex items-center" :href="route('admin.internatnici.show',user)">
                                     <span  v-if="user.apartment" >{{user.apartment.name}}</span>
                                 </Link>
                             </td>
                             <td class="border-dashed border-t  border-gray-200 ">
-                                    <Link class="text-gray-700 px-6 py-3 flex justify-end" :href="route('admin.internatnici.show',user)">
+                                    <Link class="text-gray-700  px-3 md:px-6 py-3 flex justify-end" :href="route('admin.internatnici.show',user)">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                         </svg>

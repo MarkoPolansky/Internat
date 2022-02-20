@@ -38,18 +38,18 @@
                                      <td class="  border-gray-200 text-gray-700 px-6 py-3 ">
                                          {{room.name}}
                                      </td>
-                                     <td class=" border-gray-200 ">
-                                         <StarRating  v-model:rating="form[room.id].rating"  v-if="room.today_ratting" :rating="room.today_ratting.rating" :show-rating="false" :increment="0.5">
+                                     <td  class=" border-gray-200">
+                                         <StarRating :star-size="30" v-model:rating="form[room.id].rating"  v-if="room.today_ratting" :rating="room.today_ratting.rating" :show-rating="false" :increment="0.5">
                                          </StarRating>
 
-                                         <StarRating v-else  v-model:rating="form[room.id].rating"  :show-rating="false" :increment="0.5">
+                                         <StarRating :star-size="30"  v-else  v-model:rating="form[room.id].rating"  :show-rating="false" :increment="0.5">
                                          </StarRating>
                                      </td>
 
 
                                      <td v-show="form[room.id].rating <5 && form[room.id].rating >=0.5" class="p-2">
 
-                                         <div class="border-gray-200 text-gray-700 px-6 flex items-center">
+                                         <div class="border-gray-200 text-gray-700 pl-6 md:px-6 flex items-center">
                                              <BreezeInput type="text" class="block w-full" v-model="form[room.id].message" />
                                          </div>
                                      </td>

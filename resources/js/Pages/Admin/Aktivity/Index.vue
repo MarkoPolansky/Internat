@@ -6,7 +6,7 @@
             <h1 class="text-3xl py-4 border-b mb-10">Ostatné Aktivity</h1>
             <div class="flex flex-wrap -mx-3">
 
-                <div class="w-full xl:w-1/2 px-3 ">
+                <div class="w-full xl:w-1/2 px-3 mb-8 xl:mb-0 ">
                     <div class="flex gap-2 justify-between mb-12">
                     <p class="text-2xl font-semibold ">Dnešná Aktivita</p>
 
@@ -80,7 +80,7 @@
                 </div>
 
 
-                <div class="w-full xl:w-1/2 px-3">
+                <div class="w-full xl:w-1/2 px-3 mb-8 xl:mb-0">
                     <p class="text-2xl font-semibold mb-12">Dnešné hlasovanie</p>
                     <div class="flex gap-3 flex-col sm:flex-row ">
                         <div class="flex-1" v-for="availableActivity in availableActivities" :key="availableActivity.id">
@@ -101,14 +101,7 @@
 
             </div>
 
-            <div class="w-full xl:w-1/2 mb-12 xl:mb-0 px-4 mx-auto mt-24">
-                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ">
 
-                    <div class="block w-full overflow-x-auto ">
-
-                    </div>
-                </div>
-            </div>
 
         </div>
 

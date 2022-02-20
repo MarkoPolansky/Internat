@@ -5,7 +5,7 @@
         <div class="container mx-auto py-6 px-4">
             <h1 class="text-3xl py-4 border-b mb-10">Izba / {{apartment.name}}</h1>
             <div class="flex flex-wrap -mx-3">
-                <div class="w-full xl:w-1/2 px-3">
+                <div class="w-full xl:w-1/2 px-3 mb-8 xl:mb-0">
                     <p class="text-xl font-semibold mb-4">Bývajúci</p>
 
 
@@ -53,7 +53,7 @@
                 </div>
 
 
-                <div class="w-full xl:w-1/2 px-3">
+                <div class="w-full xl:w-1/2 px-3 mb-8 xl:mb-0">
                     <p class="text-xl font-semibold mb-4"> Hodnotenie izby za posledné 4 týždne</p>
 
                     <div class="flex flex-col justify-center ">

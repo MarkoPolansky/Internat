@@ -9,7 +9,7 @@
 
                     <div class="sm:w-1/2 w-full  xl:w-1/4 px-3">
                         <Link :href="route('admin.vychadzky')">
-                            <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
+                            <div class="w-full xl:h-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
                                 <svg class="w-16 h-16  mr-4 hidden lg:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
 
                                 <div class="text-gray-700">
@@ -24,7 +24,7 @@
 
                     <div class="sm:w-1/2 w-full  xl:w-1/4 px-3">
                         <Link :href="route('admin.hodnotenie.create')">
-                            <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
+                            <div class="w-full xl:h-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16  mr-4 hidden lg:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                                 </svg>
@@ -38,7 +38,7 @@
 
 
                 <div class="sm:w-1/2 w-full  xl:w-1/4 px-3">
-                    <div v-if="activities.length == 0"  class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0" >
+                    <div v-if="activities.length == 0"  class="w-full xl:h-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0" >
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16  mr-4 hidden lg:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
                         </svg>
@@ -51,7 +51,7 @@
 
                     <Link v-else  :href="route('admin.activity.index')">
 
-                        <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
+                        <div class="w-full xl:h-full bg-white border text-blue-400 rounded-lg flex items-center p-6 mb-6 xl:mb-0">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16  mr-4 hidden lg:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
                             </svg>
@@ -74,7 +74,7 @@
 
                     <div class="sm:w-1/2 w-full  xl:w-1/4 px-3">
                         <Link :href="route('admin.workout')">
-                        <div class="w-full bg-white border text-blue-400 rounded-lg flex items-center p-6">
+                        <div class="w-full  bg-white border text-blue-400 rounded-lg flex items-center p-6">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16  mr-4 hidden lg:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>
@@ -93,7 +93,7 @@
 
             <div class="flex flex-wrap -mx-3">
 
-                <div class="w-full xl:w-1/3 px-3 ">
+                <div class="w-full xl:w-1/3 px-3 mb-8 xl:mb-0 ">
                     <p class="text-xl font-semibold mb-4">Práve na vychádzkach</p>
 
                     <div class=" w-full overflow-y-auto bg-white border rounded-lg p-4 max-h-96">
@@ -117,7 +117,7 @@
                     </div>
                 </div>
 
-                <div class="w-full xl:w-1/3 px-3">
+                <div class="w-full xl:w-1/3 px-3 ">
                     <p class="text-xl font-semibold mb-4">Hlasovanie o aktivite</p>
                     <div class="w-full bg-white border rounded-lg p-4 mb-8 xl:mb-0">
                         <GraphTodayActivityVoting :availableActivities="availableActivities">
@@ -126,7 +126,7 @@
                     </div>
                 </div>
 
-                <div class="w-full xl:w-1/3 px-3">
+                <div class="w-full xl:w-1/3 px-3 mb-8 xl:mb-0">
                     <p class="text-xl font-semibold mb-4">Aktuálne Na Workoute</p>
                     <div class="w-full bg-white border rounded-lg p-4">
                         <div v-for="workout in workouts" :key="workout.id"

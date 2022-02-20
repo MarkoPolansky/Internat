@@ -7,7 +7,7 @@
             <h1 class="text-3xl py-4 border-b mb-10">Pozvať poúživateľa </h1>
 
             <div class="flex flex-wrap -mx-3">
-                <div class="w-full xl:w-1/3 px-3">
+                <div class="w-full xl:w-1/3 px-3 mb-8 xl:mb-0">
                     <p class="text-xl font-semibold mb-4">Pozvánka</p>
                     <div class="w-full bg-white border rounded-lg p-4 mb-8 xl:mb-0">
                         <BreezeValidationErrors class="mb-4" />
@@ -51,7 +51,7 @@
                 </div>
 
 
-                <div class="w-full xl:w-2/3 px-3">
+                <div class="w-full xl:w-2/3 px-3 mb-8 xl:mb-0">
                     <p class="text-xl font-semibold mb-4">Pozvánky</p>
 
 
