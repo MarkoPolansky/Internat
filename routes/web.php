@@ -28,13 +28,10 @@ Route::group(['middleware' => ['auth', 'role:internatista'],],function (){
     Route::post('/workout/odchod',[\App\Http\Controllers\User\WorkoutController::class,'odchod'])->name('workout.odchod');
     Route::post('/workout/prichod',[\App\Http\Controllers\User\WorkoutController::class,'prichod'])->name('workout.prichod');
 
-
     Route::post('/activity/vote',[\App\Http\Controllers\User\AvailableActivityController::class,'vote'])->name('activity.vote');
 
 
     Route::get('/hodnotenie',[\App\Http\Controllers\User\RattingController::class,'index'])->name('hodnotenie');
-
-
 });
 
 Route::get('/hello',[\App\Http\Controllers\Admin\UserController::class,'internatnici'])->name('internatnici');
@@ -47,8 +44,6 @@ Route::post('/invite/accept/{token}',[\App\Http\Controllers\Admin\InviteControll
 Route::group(['middleware' => ['auth', 'role:vychovavatel|Super-Admin'], 'as' => 'admin.', 'prefix' => 'admin','namespace' => 'admin'],function (){
     Route::get('/dashboard',[\App\Http\Controllers\Admin\DashboardController::class,'index'])->name('dashboard');
 
-
-
     Route::get('/internatnici',[\App\Http\Controllers\Admin\InternatniciController::class,'index'])->name('internatnici');
     Route::get('/internatnici/{userId}/edit',[\App\Http\Controllers\Admin\InternatniciController::class,'show'])->name('internatnici.show');
     Route::put('/internatnici/{user}',[\App\Http\Controllers\Admin\InternatniciController::class,'update'])->name('internatnici.update');
@@ -58,13 +53,8 @@ Route::group(['middleware' => ['auth', 'role:vychovavatel|Super-Admin'], 'as' =>
     Route::post('/invite',[\App\Http\Controllers\Admin\InviteController::class,'invite'])->name('invite');
     Route::delete('/invite/{inviteId}',[\App\Http\Controllers\Admin\InviteController::class,'destroy'])->name('invite.destroy');
 
-
-
     Route::get('/izby',[\App\Http\Controllers\Admin\ApartmentController::class,'index'])->name('izby');
     Route::get('/izby/{apartmentId}',[\App\Http\Controllers\Admin\ApartmentController::class,'edit'])->name('izby.show');
-
-
-
 
     Route::get('/upratovanie/create',[\App\Http\Controllers\Admin\CleaningController::class,'create'])->name('upratovanie.create');
     Route::post('/upratovanie',[\App\Http\Controllers\Admin\CleaningController::class,'store'])->name('upratovanie.store');
@@ -73,7 +63,6 @@ Route::group(['middleware' => ['auth', 'role:vychovavatel|Super-Admin'], 'as' =>
     Route::get('/oznamenie/create', [\App\Http\Controllers\Admin\AnnouncementController::class,'create'])->name('oznamenie.create');
     Route::post('/oznamenie', [\App\Http\Controllers\Admin\AnnouncementController::class,'store'])->name('oznamenie.store');
     Route::delete('/oznamenie/delete',[\App\Http\Controllers\Admin\AnnouncementController::class,'destroy'])->name('oznamenie.destroy');
-
 
 
     Route::get('/vychadzky',[\App\Http\Controllers\Admin\OutingController::class,'index'])->name('vychadzky');
@@ -87,17 +76,14 @@ Route::group(['middleware' => ['auth', 'role:vychovavatel|Super-Admin'], 'as' =>
     Route::put('/rating-rule/{ratingRule}',[\App\Http\Controllers\Admin\RatingRuleController::class,'update'])->name('rating-rule.update');
     Route::delete('/rating-rule/{ratingRule}',[\App\Http\Controllers\Admin\RatingRuleController::class,'destroy'])->name('rating-rule.destroy');
 
-
     Route::get('/hodnotenie/create',[\App\Http\Controllers\Admin\RattingController::class, 'create'])->name('hodnotenie.create');
     Route::post('/hodnotenie',[\App\Http\Controllers\Admin\RattingController::class, 'update'])->name('hodnotenie.update');
-
 
     Route::get('/dostupne-aktivity',[\App\Http\Controllers\Admin\AvailableActivitiesController::class,'index'])->name('availableActivities.index');
     Route::post('/dostupne-aktivity',[\App\Http\Controllers\Admin\AvailableActivitiesController::class,'store'])->name('availableActivities.store');
     Route::get('/dostupne-aktivity/{availableActivity}',[\App\Http\Controllers\Admin\AvailableActivitiesController::class,'edit'])->name('availableActivities.edit');
     Route::put('/dostupne-aktivity/{availableActivity}',[\App\Http\Controllers\Admin\AvailableActivitiesController::class,'update'])->name('availableActivities.update');
     Route::delete('/dostupne-aktivity/{availableActivity}',[\App\Http\Controllers\Admin\AvailableActivitiesController::class,'destroy'])->name('availableActivities.destroy');
-
 
     Route::get('/activity',[\App\Http\Controllers\Admin\ActivityController::class,'index'])->name('activity.index');
     Route::post('/activity',[\App\Http\Controllers\Admin\ActivityController::class,'store'])->name('activity.store');
@@ -111,16 +97,10 @@ Route::group(['middleware' => ['auth', 'role:vychovavatel|Super-Admin'], 'as' =>
 
 
 Route::group(['middleware' => ['auth', 'role:Super-Admin'], 'as' => 'admin.', 'prefix' => 'admin','namespace' => 'admin'],function (){
-
-
-
     Route::get('/users',[\App\Http\Controllers\Admin\UserController::class,'index'])->name('users');
     Route::get('/users/{userId}/edit',[\App\Http\Controllers\Admin\UserController::class,'show'])->name('users.show');
     Route::put('/users/{user}',[\App\Http\Controllers\Admin\UserController::class,'update'])->name('users.update');
     Route::delete('/users/{user}',[\App\Http\Controllers\Admin\UserController::class,'destroy'])->name('users.destroy');
-
-
-
 });
 
 
